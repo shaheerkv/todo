@@ -1,0 +1,1 @@
+export const TODO_DATABASE = "todo_database";

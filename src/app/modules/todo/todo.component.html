@@ -1,0 +1,25 @@
+<div class="card shadow-lg mt-5">
+    <div class="card-header text-center py-4 border-0">
+        <h1 class="display-6 fw-bold">To Do List</h1>
+    </div>
+    <div class="card-body p-4">
+
+        <ul class="list-group" [formGroup]="todoForm">
+            <li class="list-group-item mb-2 border py-0 rounded-3">
+                <div class="input-group">
+                    <input type="text" class="form-control border-0 py-3 shadow-none" placeholder="Type a to do task"
+                        formControlName="todoItem">
+                    <button class="btn text-success border-0" (click)="onClick()" [disabled]="todoForm.invalid" #textInput>
+                        <i class="fa-solid fa-circle-plus fa-xl"></i>
+                    </button>
+                </div>
+            </li>
+            <li class="list-group-item mb-2 border py-3 rounded-3" *ngFor="let item of todoItems">
+                <app-todo-list [dataItem]="item" (deleteItem)="onDelete($event)" (updateItem)="onStatusChange($event)"></app-todo-list>
+            </li>
+            <li class ="list-group-item border-0" *ngIf="todoItems.length == 0">
+                <span>There aren't any todos. Why don't you <a target="" href=""  (click)="$event.preventDefault();textInput.focus; focusClicked()">create one?</a></span>
+            </li>
+        </ul>
+    </div>
+</div>
